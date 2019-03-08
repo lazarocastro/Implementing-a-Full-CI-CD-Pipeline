@@ -1,0 +1,252 @@
+<mat-card _ngcontent-c17="" class="mat-card"><h3 _ngcontent-c17="" class="ng-tns-c17-7">Instructions</h3><app-render-markdown _ngcontent-c17="" _nghost-c9="" class="ng-tns-c17-7"><md-editor _ngcontent-c9="" name="Content" _nghost-c11="" class="ng-untouched ng-valid ng-dirty"><div _ngcontent-c11="" class="md-editor-container"><!----><div _ngcontent-c11="" class="editor-container"><div _ngcontent-c11="" style="display: none;"><div _ngcontent-c11="" class="editor-panel" style="height: auto;"><div _ngcontent-c11="" class="ace-editor ace_editor ace-tm"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled"></div><div class="ace_gutter-active-line"></div></div><div class="ace_scroller"><div class="ace_content"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 4px; visibility: visible;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 20px;"><div class="ace_scrollbar-inner" style="width: 20px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 20px;"><div class="ace_scrollbar-inner" style="height: 20px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div></div><div _ngcontent-c11="" style="display: block;"><div _ngcontent-c11="" class="preview-panel" style="height: auto;"><p>Your team is building the train schedule app. They currently have it running on a Kubernetes cluster, but they need to monitor the performance of the cluster and the applications running on it. You have been tasked with installing and setting up Prometheus to aggregate data and Grafana to display this data. Both can be installed on the Kubernetes cluster itself. To make sure everything is working, you will need to create two dashboards in Grafana:</p>
+<ol>
+<li>Import the <code>Kubernetes All Nodes</code> community dashboard to display basic metrics about the Kubernetes cluster.</li><li>Create a new Dashboard and add a graph showing requests per minute for the train-schedule app.</li></ol>
+<p>To accomplish this, you will need to:</p>
+<ul>
+<li>Initialize helm with: <code>helm init --wait</code></li><li>Clone the Kubernetes standard charts git repo and checkout a specific commit: <pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">git clone https://github.com/kubernetes/charts
+cd charts
+git checkout efdcffe0b6973111ec6e5e83136ea74cdbe6527d
+cd ../</code></pre></li><li>Create a <em>prometheus-values.yml</em> for prometheus to turn off persistent storage:<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">alertmanager:
+  persistentVolume:
+    enabled: false
+server:
+  persistentVolume:
+    enabled: false</code></pre></li><li>Use helm to install prometheus in the <code>prometheus</code> namespace:<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">helm install -f ~/prometheus-values.yml ~/charts/stable/prometheus --name prometheus --namespace prometheus</code></pre></li><li>Create a <em>grafana-values.yml</em> for grafana to set an admin password:<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">adminPassword: password</code></pre></li><li>Use helm to install grafana in the <code>grafana</code> namespace:<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">helm install -f ~/grafana-values.yml ~/charts/stable/grafana --name grafana --namespace grafana</code></pre></li><li>Deploy a NodePort service to provide external access to grafana.
+Make a file called <em>grafana-ext.yml</em>:<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">kind: Service
+apiVersion: v1
+metadata:
+  namespace: grafana
+  name: grafana-ext
+spec:
+  type: NodePort
+  selector:
+    app: grafana
+  ports:
+  - protocol: TCP
+    port: 3000
+    nodePort: 8081</code></pre>And deploy the service:<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">kubectl apply -f ~/grafana-ext.yml</code></pre></li><li>Log in to grafana at <code>&lt;Kubernetes Node Public IP&gt;:8081</code>.</li><li>Add a datasource for prometheus. The type should be set to <code>Prometheus</code> and the url is <code>http://prometheus-server.prometheus.svc.cluster.local</code>.</li><li>Add the <code>Kubernetes All Nodes</code> community dashboard with id <code>3131</code>.</li><li>Create a new dashboard and add a requests per minute graph for the train-schedule app. You can use the following query:<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">sum(rate(http_request_duration_ms_count[2m])) by (service, route, method, code)  * 60</code></pre></li></ul>
+</div></div></div><!----></div></md-editor></app-render-markdown><h3 _ngcontent-c17="" class="ng-tns-c17-7">Objectives</h3><!----><div _ngcontent-c17="" class="ng-tns-c17-7 ng-star-inserted" style=""><div _ngcontent-c17="" class="task-container containerX" style="flex-direction: row; box-sizing: border-box; display: flex;"><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 5%" fxflex.sm="1 1 15%" fxflex.xs="1 1 15%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 5%;"><mat-icon _ngcontent-c17="" class="task-help mat-icon material-icons" role="img" aria-hidden="true">help</mat-icon></div><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 95%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 95%;"><strong _ngcontent-c17="" class="ng-tns-c17-7">Install prometheus in the Kubernetes cluster</strong><br _ngcontent-c17="" class="ng-tns-c17-7"><div _ngcontent-c17="" class="explanation ng-trigger ng-trigger-showHide" style="max-height: 10000px;"><app-render-markdown _ngcontent-c17="" class="ng-tns-c17-7" _nghost-c9=""><md-editor _ngcontent-c9="" name="Content" _nghost-c11="" class="ng-untouched ng-valid ng-dirty"><div _ngcontent-c11="" class="md-editor-container"><!----><div _ngcontent-c11="" class="editor-container"><div _ngcontent-c11="" style="display: none;"><div _ngcontent-c11="" class="editor-panel" style="height: auto;"><div _ngcontent-c11="" class="ace-editor ace_editor ace-tm"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled"></div><div class="ace_gutter-active-line"></div></div><div class="ace_scroller"><div class="ace_content"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 4px; visibility: visible;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 20px;"><div class="ace_scrollbar-inner" style="width: 20px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 20px;"><div class="ace_scrollbar-inner" style="height: 20px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div></div><div _ngcontent-c11="" style="display: block;"><div _ngcontent-c11="" class="preview-panel" style="height: auto;"><p>To do this, make sure you have cloned the kubernetes charts repo:</p>
+<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">cd ~/
+git clone https://github.com/kubernetes/charts
+cd charts
+git checkout efdcffe0b6973111ec6e5e83136ea74cdbe6527d
+cd ../</code></pre><p>Create a <em>prometheus-values.yml</em> with this content:</p>
+<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">  alertmanager:
+    persistentVolume:
+      enabled: false
+  server:
+    persistentVolume:
+      enabled: false</code></pre><p>Use helm to install Prometheus with <em>prometheus-values.yml</em>:</p>
+<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">helm install -f ~/prometheus-values.yml ~/charts/stable/prometheus --name prometheus --namespace prometheus</code></pre></div></div></div><!----></div></md-editor></app-render-markdown></div></div></div></div><div _ngcontent-c17="" class="ng-tns-c17-7 ng-star-inserted" style=""><div _ngcontent-c17="" class="task-container containerX" style="flex-direction: row; box-sizing: border-box; display: flex;"><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 5%" fxflex.sm="1 1 15%" fxflex.xs="1 1 15%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 5%;"><mat-icon _ngcontent-c17="" class="task-help mat-icon material-icons" role="img" aria-hidden="true">help</mat-icon></div><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 95%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 95%;"><strong _ngcontent-c17="" class="ng-tns-c17-7">Install Grafana in the Kubernetes cluster</strong><br _ngcontent-c17="" class="ng-tns-c17-7"><div _ngcontent-c17="" class="explanation ng-trigger ng-trigger-showHide" style="max-height: 10000px;"><app-render-markdown _ngcontent-c17="" class="ng-tns-c17-7" _nghost-c9=""><md-editor _ngcontent-c9="" name="Content" _nghost-c11="" class="ng-untouched ng-valid ng-dirty"><div _ngcontent-c11="" class="md-editor-container"><!----><div _ngcontent-c11="" class="editor-container"><div _ngcontent-c11="" style="display: none;"><div _ngcontent-c11="" class="editor-panel" style="height: auto;"><div _ngcontent-c11="" class="ace-editor ace_editor ace-tm"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled"></div><div class="ace_gutter-active-line"></div></div><div class="ace_scroller"><div class="ace_content"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 4px; visibility: visible;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 20px;"><div class="ace_scrollbar-inner" style="width: 20px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 20px;"><div class="ace_scrollbar-inner" style="height: 20px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div></div><div _ngcontent-c11="" style="display: block;"><div _ngcontent-c11="" class="preview-panel" style="height: auto;"><p>To do this, make sure you have cloned the kubernetes charts repo:</p>
+<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">cd ~/
+git clone https://github.com/kubernetes/charts</code></pre><p>Create a <em>grafana-values.yml</em> with this content (you will use this password to log in to Grafana):</p>
+<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">adminPassword: somePassword</code></pre><p>Use helm to install Grafana with <em>grafana-values.yml</em>:</p>
+<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">helm install -f ~/grafana-values.yml ~/charts/stable/grafana --name grafana --namespace grafana</code></pre></div></div></div><!----></div></md-editor></app-render-markdown></div></div></div></div></mat-card>
+
+<h1>Solution</h1>
+<pre>
+    <code>
+root@ip-10-0-1-101:~# kubectl get nodes
+NAME            STATUS    ROLES     AGE       VERSION
+ip-10-0-1-101   Ready     master    10m       v1.10.0
+ip-10-0-1-102   Ready     <none>    10m       v1.10.0
+root@ip-10-0-1-101:~# helm init --wait
+Creating /root/.helm 
+Creating /root/.helm/repository 
+Creating /root/.helm/repository/cache 
+Creating /root/.helm/repository/local 
+Creating /root/.helm/plugins 
+Creating /root/.helm/starters 
+Creating /root/.helm/cache/archive 
+Creating /root/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /root/.helm.
+
+Tiller (the Helm server-side component) has been installed into your Kubernetes Cluster.
+
+Please note: by default, Tiller is deployed with an insecure 'allow unauthenticated users' policy.
+For more information on securing your installation see: https://docs.helm.sh/using_helm/#securing-your-helm-installation
+Happy Helming!
+root@ip-10-0-1-101:~# ls
+aws-cfn-bootstrap-latest  kube-flannel.yml  kube-init-config.yml
+root@ip-10-0-1-101:~# git clone https://github.com/kubernetes/charts
+Cloning into 'charts'...
+remote: Enumerating objects: 13, done.
+remote: Counting objects: 100% (13/13), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 56412 (delta 4), reused 7 (delta 4), pack-reused 56399
+Receiving objects: 100% (56412/56412), 16.70 MiB | 19.81 MiB/s, done.
+Resolving deltas: 100% (38795/38795), done.
+Checking connectivity... done.
+root@ip-10-0-1-101:~# cd charts/
+root@ip-10-0-1-101:~/charts# git checkout efdcffe0b6973111ec6e5e83136ea74cdbe6527d
+Note: checking out 'efdcffe0b6973111ec6e5e83136ea74cdbe6527d'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at efdcffe... [stable/prometheus] Ability to enable admin API (#5570)
+root@ip-10-0-1-101:~/charts# ls
+CONTRIBUTING.md  LICENSE  OWNERS  PROCESSES.md  README.md  REVIEW_GUIDELINES.md  code-of-conduct.md  incubator  stable  test
+root@ip-10-0-1-101:~/charts# cd ..
+root@ip-10-0-1-101:~# vim prometheus-values.yml
+root@ip-10-0-1-101:~# helm install -f ~/prometheus-values.yml ~/charts/stable/prometheus --name prometheus --namespace prometheus
+NAME:   prometheus
+LAST DEPLOYED: Fri Feb 15 00:57:42 2019
+NAMESPACE: prometheus
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/ServiceAccount
+NAME                           SECRETS  AGE
+prometheus-alertmanager        1        0s
+prometheus-kube-state-metrics  1        0s
+prometheus-node-exporter       1        0s
+prometheus-pushgateway         1        0s
+prometheus-server              1        0s
+
+==> v1beta1/ClusterRole
+NAME                           AGE
+prometheus-kube-state-metrics  0s
+prometheus-server              0s
+
+==> v1beta1/ClusterRoleBinding
+NAME                           AGE
+prometheus-kube-state-metrics  0s
+prometheus-server              0s
+
+==> v1/Service
+NAME                           TYPE       CLUSTER-IP      EXTERNAL-IP  PORT(S)   AGE
+prometheus-alertmanager        ClusterIP  10.105.212.152  <none>       80/TCP    0s
+prometheus-kube-state-metrics  ClusterIP  None            <none>       80/TCP    0s
+prometheus-node-exporter       ClusterIP  None            <none>       9100/TCP  0s
+prometheus-pushgateway         ClusterIP  10.103.241.28   <none>       9091/TCP  0s
+prometheus-server              ClusterIP  10.106.73.170   <none>       80/TCP    0s
+
+==> v1beta1/DaemonSet
+NAME                      DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE SELECTOR  AGE
+prometheus-node-exporter  1        1        0      1           0          <none>         0s
+
+==> v1beta1/Deployment
+NAME                           DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
+prometheus-alertmanager        1        1        1           0          0s
+prometheus-kube-state-metrics  1        1        1           0          0s
+prometheus-pushgateway         1        1        1           0          0s
+prometheus-server              1        1        1           0          0s
+
+==> v1/Pod(related)
+NAME                                            READY  STATUS             RESTARTS  AGE
+prometheus-node-exporter-mrrbv                  0/1    ContainerCreating  0         0s
+prometheus-alertmanager-7b47d55bdf-jkvw2        0/2    ContainerCreating  0         0s
+prometheus-kube-state-metrics-6584885ccf-7gks2  0/1    ContainerCreating  0         0s
+prometheus-pushgateway-66c9fdb48f-9kjgz         0/1    Pending            0         0s
+prometheus-server-65d5cc8544-sqkcn              0/2    Pending            0         0s
+
+==> v1/ConfigMap
+NAME                     DATA  AGE
+prometheus-alertmanager  1     0s
+prometheus-server        3     0s
+
+
+NOTES:
+The Prometheus server can be accessed via port 80 on the following DNS name from within your cluster:
+prometheus-server.prometheus.svc.cluster.local
+
+
+Get the Prometheus server URL by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace prometheus -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace prometheus port-forward $POD_NAME 9090
+#################################################################################
+######   WARNING: Persistence is disabled!!! You will lose your data when   #####
+######            the Server pod is terminated.                             #####
+#################################################################################
+
+
+The Prometheus alertmanager can be accessed via port 80 on the following DNS name from within your cluster:
+prometheus-alertmanager.prometheus.svc.cluster.local
+
+
+Get the Alertmanager URL by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace prometheus -l "app=prometheus,component=alertmanager" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace prometheus port-forward $POD_NAME 9093
+#################################################################################
+######   WARNING: Persistence is disabled!!! You will lose your data when   #####
+######            the AlertManager pod is terminated.                       #####
+#################################################################################
+
+
+The Prometheus PushGateway can be accessed via port 9091 on the following DNS name from within your cluster:
+prometheus-pushgateway.prometheus.svc.cluster.local
+
+
+Get the PushGateway URL by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace prometheus -l "app=prometheus,component=pushgateway" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace prometheus port-forward $POD_NAME 9091
+
+For more information on running Prometheus, visit:
+https://prometheus.io/
+
+root@ip-10-0-1-101:~# vim grafana-values.yml
+root@ip-10-0-1-101:~# helm install -f ~/grafana-values.yml ~/charts/stable/grafana --name grafana --namespace grafana
+NAME:   grafana
+LAST DEPLOYED: Fri Feb 15 00:59:34 2019
+NAMESPACE: grafana
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/Secret
+NAME     TYPE    DATA  AGE
+grafana  Opaque  3     0s
+
+==> v1/ConfigMap
+NAME                     DATA  AGE
+grafana                  1     0s
+grafana-dashboards-json  0     0s
+
+==> v1/Service
+NAME     TYPE       CLUSTER-IP      EXTERNAL-IP  PORT(S)  AGE
+grafana  ClusterIP  10.106.146.249  <none>       80/TCP   0s
+
+==> v1beta2/Deployment
+NAME     DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
+grafana  1        1        1           0          0s
+
+==> v1/Pod(related)
+NAME                     READY  STATUS             RESTARTS  AGE
+grafana-d65c89cdc-wc5rv  0/1    ContainerCreating  0         0s
+
+
+NOTES:
+1. Get your 'admin' user password by running:
+
+   kubectl get secret --namespace grafana grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+2. The Grafana server can be accessed via port 80 on the following DNS name from within your cluster:
+
+   grafana.grafana.svc.cluster.local
+
+   Get the Grafana URL to visit by running these commands in the same shell:
+
+     export POD_NAME=$(kubectl get pods --namespace grafana -l "app=grafana,component=" -o jsonpath="{.items[0].metadata.name}")
+     kubectl --namespace grafana port-forward $POD_NAME 3000
+
+3. Login with the password from step 1 and the username: admin
+#################################################################################
+######   WARNING: Persistence is disabled!!! You will lose your data when   #####
+######            the Grafana pod is terminated.                            #####
+#################################################################################
+
+root@ip-10-0-1-101:~# vim grafana-ext.yml
+root@ip-10-0-1-101:~# kubectl apply -f ~/grafana-ext.yml 
+service "grafana-ext" created
+root@ip-10-0-1-101:~# 
+
+    </code>
+</pre>

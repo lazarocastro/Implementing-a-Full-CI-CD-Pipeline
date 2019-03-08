@@ -1,0 +1,377 @@
+<mat-card _ngcontent-c17="" class="mat-card"><h3 _ngcontent-c17="" class="ng-tns-c17-2">Instructions</h3><app-render-markdown _ngcontent-c17="" _nghost-c9="" class="ng-tns-c17-2"><md-editor _ngcontent-c9="" name="Content" _nghost-c11="" class="ng-untouched ng-valid ng-dirty"><div _ngcontent-c11="" class="md-editor-container"><!----><div _ngcontent-c11="" class="editor-container"><div _ngcontent-c11="" style="display: none;"><div _ngcontent-c11="" class="editor-panel" style="height: auto;"><div _ngcontent-c11="" class="ace-editor ace_editor ace-tm"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled"></div><div class="ace_gutter-active-line"></div></div><div class="ace_scroller"><div class="ace_content"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 4px; visibility: visible;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 20px;"><div class="ace_scrollbar-inner" style="width: 20px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 20px;"><div class="ace_scrollbar-inner" style="height: 20px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div></div><div _ngcontent-c11="" style="display: block;"><div _ngcontent-c11="" class="preview-panel" style="height: auto;"><p>In this scenario, developers have created the first prototype of the train-schedule app. They need you to create a Gradle build for it. The developers need this build to execute some automated tests that they have written. If the automated tests pass, the build needs to produce a packaged archive that includes the application code and its dependencies. The archive should be located in the project folder as <em>dist/trainSchedule.zip</em>.</p>
+<p>In short, this automation needs to:</p>
+<ul>
+<li>Have a build task that can be called to execute the entire build process</li><li>Execute some automated tests (the build should fail if any of the tests fail)</li><li>Package the code and its dependencies into a zip archive called <em>dist/trainSchedule.zip</em></li></ul>
+<p>Prerequisites:</p>
+<ul>
+<li>A GitHub.com account</li></ul>
+<p>In order to accomplish this, you will need to:</p>
+<ul>
+<li>Configure git for ssh authentication with GitHub.com</li><li>Create a personal fork of the sample repository <a href="https://github.com/linuxacademy/cicd-pipeline-train-schedule-gradle">https://github.com/linuxacademy/cicd-pipeline-train-schedule-gradle</a></li><li>Clone your personal fork from GitHub</li><li>Initialize the project with gradle</li><li>Create a gradle build task</li><li>Include the <em>com.moowork.node</em> plugin in the gradle project</li><li>Execute automated tests as part of the build with the npm_test task</li><li>Create a task to generate a zip archive (<em>dist/trainSchedule.zip</em>) of the files that need to be depoyed to production</li><li>Make sure task dependencies are set up so tasks execute in the correct order</li><li>Commit and push these changes to your GitHub fork</li></ul>
+<p>Some useful links:</p>
+<ul>
+<li>Gradle wrapper documentation: <a href="https://docs.gradle.org/current/userguide/gradle_wrapper.html">https://docs.gradle.org/current/userguide/gradle_wrapper.html</a></li></ul>
+</div></div></div><!----></div></md-editor></app-render-markdown><h3 _ngcontent-c17="" class="ng-tns-c17-2">Objectives</h3><!----><div _ngcontent-c17="" class="ng-tns-c17-2 ng-star-inserted" style=""><div _ngcontent-c17="" class="task-container containerX" style="flex-direction: row; box-sizing: border-box; display: flex;"><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 5%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 5%;"><mat-icon _ngcontent-c17="" class="task-help mat-icon material-icons" role="img" aria-hidden="true">help</mat-icon></div><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 95%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 95%;"><strong _ngcontent-c17="" class="ng-tns-c17-2">Your personal fork of the git repository is cloned to the cloud server</strong><br _ngcontent-c17="" class="ng-tns-c17-2"><div _ngcontent-c17="" class="explanation ng-trigger ng-trigger-showHide" style="max-height: 10000px;"><app-render-markdown _ngcontent-c17="" class="ng-tns-c17-2" _nghost-c9=""><md-editor _ngcontent-c9="" name="Content" _nghost-c11="" class="ng-untouched ng-valid ng-dirty"><div _ngcontent-c11="" class="md-editor-container"><!----><div _ngcontent-c11="" class="editor-container"><div _ngcontent-c11="" style="display: none;"><div _ngcontent-c11="" class="editor-panel" style="height: auto;"><div _ngcontent-c11="" class="ace-editor ace_editor ace-tm"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled"></div><div class="ace_gutter-active-line"></div></div><div class="ace_scroller"><div class="ace_content"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 4px; visibility: visible;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 20px;"><div class="ace_scrollbar-inner" style="width: 20px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 20px;"><div class="ace_scrollbar-inner" style="height: 20px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div></div><div _ngcontent-c11="" style="display: block;"><div _ngcontent-c11="" class="preview-panel" style="height: auto;"><p> You need to clone your personal fork of the sample git repository to the cloud server. Make sure you perform the clone from your home directory.</p>
+<p> You can do so like this:</p>
+<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined"> cd ~/
+ git clone git@github.com:&lt;your username&gt;/cicd-pipeline-train-schedule-gradle.git</code></pre></div></div></div><!----></div></md-editor></app-render-markdown></div></div></div></div><div _ngcontent-c17="" class="ng-tns-c17-2 ng-star-inserted" style=""><div _ngcontent-c17="" class="task-container containerX" style="flex-direction: row; box-sizing: border-box; display: flex;"><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 5%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 5%;"><mat-icon _ngcontent-c17="" class="task-help mat-icon material-icons" role="img" aria-hidden="true">help</mat-icon></div><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 95%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 95%;"><strong _ngcontent-c17="" class="ng-tns-c17-2">You initialized the project as a gradle project</strong><br _ngcontent-c17="" class="ng-tns-c17-2"><div _ngcontent-c17="" class="explanation ng-trigger ng-trigger-showHide" style="max-height: 10000px;"><app-render-markdown _ngcontent-c17="" class="ng-tns-c17-2" _nghost-c9=""><md-editor _ngcontent-c9="" name="Content" _nghost-c11="" class="ng-untouched ng-valid ng-dirty"><div _ngcontent-c11="" class="md-editor-container"><!----><div _ngcontent-c11="" class="editor-container"><div _ngcontent-c11="" style="display: none;"><div _ngcontent-c11="" class="editor-panel" style="height: auto;"><div _ngcontent-c11="" class="ace-editor ace_editor ace-tm"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled"></div><div class="ace_gutter-active-line"></div></div><div class="ace_scroller"><div class="ace_content"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 4px; visibility: visible;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 20px;"><div class="ace_scrollbar-inner" style="width: 20px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 20px;"><div class="ace_scrollbar-inner" style="height: 20px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div></div><div _ngcontent-c11="" style="display: block;"><div _ngcontent-c11="" class="preview-panel" style="height: auto;"><p> Once you have cloned the git repo to your home directory, <code>cd</code> into the repo directory and then initialize the gradle build.</p>
+<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined"> cd ~/cicd-pipeline-train-schedule-gradle
+ ./gradlew init</code></pre></div></div></div><!----></div></md-editor></app-render-markdown></div></div></div></div><div _ngcontent-c17="" class="ng-tns-c17-2 ng-star-inserted" style=""><div _ngcontent-c17="" class="task-container containerX" style="flex-direction: row; box-sizing: border-box; display: flex;"><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 5%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 5%;"><mat-icon _ngcontent-c17="" class="task-help mat-icon material-icons" role="img" aria-hidden="true">help</mat-icon></div><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 95%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 95%;"><strong _ngcontent-c17="" class="ng-tns-c17-2">Your gradle build generates a zip archive of the application in dist/trainSchedule.zip</strong><br _ngcontent-c17="" class="ng-tns-c17-2"><div _ngcontent-c17="" class="explanation ng-trigger ng-trigger-showHide" style="max-height: 10000px;"><app-render-markdown _ngcontent-c17="" class="ng-tns-c17-2" _nghost-c9=""><md-editor _ngcontent-c9="" name="Content" _nghost-c11="" class="ng-untouched ng-valid ng-dirty"><div _ngcontent-c11="" class="md-editor-container"><!----><div _ngcontent-c11="" class="editor-container"><div _ngcontent-c11="" style="display: none;"><div _ngcontent-c11="" class="editor-panel" style="height: auto;"><div _ngcontent-c11="" class="ace-editor ace_editor ace-tm"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled"></div><div class="ace_gutter-active-line"></div></div><div class="ace_scroller"><div class="ace_content"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 4px; visibility: visible;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 20px;"><div class="ace_scrollbar-inner" style="width: 20px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 20px;"><div class="ace_scrollbar-inner" style="height: 20px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div></div><div _ngcontent-c11="" style="display: block;"><div _ngcontent-c11="" class="preview-panel" style="height: auto;"><p>The gradle build should generate an archive of the application in <em>dist/trainSchedule.zip</em>.</p>
+<p>You can do this by adding a task to create this archive to build.gradle and ensuring the build task depends on it.</p>
+<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">task zip(type: Zip) {
+    from ('.') {
+        include "*"
+        include "bin/**"
+        include "data/**"
+        include "node_modules/**"
+        include "public/**"
+        include "routes/**"
+        include "views/**"
+    }
+    destinationDir(file("dist"))
+    baseName "trainSchedule"
+}
+
+build.dependsOn zip
+zip.dependsOn npm_build</code></pre><p>Then, execute the gradle build to generate the archive:</p>
+<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">./gradlew build</code></pre></div></div></div><!----></div></md-editor></app-render-markdown></div></div></div></div></mat-card>
+
+<h1>Solution</h1>
+<pre>
+    <code>
+[cloud_user@ip-10-0-1-67 ~]$ git config --global user.name "Lázaro Castro"
+[cloud_user@ip-10-0-1-67 ~]$ git config --global user.mail lazarocastro@gmail.com
+[cloud_user@ip-10-0-1-67 ~]$ ssh-keygen -t rsa -b 4096
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/cloud_user/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/cloud_user/.ssh/id_rsa.
+Your public key has been saved in /home/cloud_user/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:ltWEnCoAQ5HLL7+Mfe3JCyxTz7a+41QK75lPjMLXZL4 cloud_user@ip-10-0-1-67.ec2.internal
+The key's randomart image is:
++---[RSA 4096]----+
+| .=+     . o.    |
+|  ...     +o     |
+| . . .   .. .    |
+|  o   . .o       |
+|   .  o.S +      |
+|  . .+ * X       |
+|   oo =.X =      |
+|   +.o.Oo* .     |
+|  . +o +&=E      |
++----[SHA256]-----+
+[cloud_user@ip-10-0-1-67 ~]$ 
+[cloud_user@ip-10-0-1-67 ~]$ cat .ssh/id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDB9AXCWmXJRRRgUSPgNYWIvHzNck1pK6LCQec3nCwnr7HOqUEfpffJW58edRfK29yxEtxa5tFuqFxfZXQt5G0gqW72y8hdsHoyFlaQfPctOKQsiwLJ7lzNGN0sV0XB88paCr2ISEICCxk/J4j5+2YBzlwWV/rdxdFLbH7eUS7at6ecWU5nApsg+rgFt84zItRdm39SX5kM6+5MUVoeFQNjo9uRzfg0C4oXMsY+TFvzls8AnLzgXWqutr/yrdtnf5+82M40cRjchep2J/bt3HDbAAThpTP06+IVi1kTQiTwQl3ay0qvSoLqq4Fzr7scTBB+il7iDoVTCdA81FHbLc7WsruU86kOjZihRgOD2tNZPzV3ThYzOz8IvZrqxgGiLGUzYXSKtoSDLO4X4mrKEMs9O8YVT1UCqBH2boXLISQ/IH4+iwvIePHtQlOXa1v373p0VDFWk7E/mICeNmLDz1IdB/qrq8p/237r3GvpKfg1RGJT6JRh7pa4mtcW+RY5nkZ5gSVCmBcg9fIK35G2Xq5Rd73YeDiq3KQoNp5ZoeKoIDynwNsdnx+cxaR8e9fFokFD3CXCufhFeAg6xCk+yOKW/UfEh1fr9GEE49Lw2nixZylGc/MHUk9+VqX+nm4/5TMHh+sMJAAuII58Bv3Mn9mbZfJ+A7DyPbyZNF2161wsNQ== cloud_user@ip-10-0-1-67.ec2.internal
+[cloud_user@ip-10-0-1-67 ~]$ git clone git@github.com:lazarocastro/cicd-pipeline-train-schedule-gradle.git
+Cloning into 'cicd-pipeline-train-schedule-gradle'...
+The authenticity of host 'github.com (192.30.253.112)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+RSA key fingerprint is MD5:16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.
+Enter passphrase for key '/home/cloud_user/.ssh/id_rsa': 
+remote: Enumerating objects: 59, done.
+remote: Total 59 (delta 0), reused 0 (delta 0), pack-reused 59
+Receiving objects: 100% (59/59), 88.34 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (13/13), done.
+[cloud_user@ip-10-0-1-67 ~]$ ls
+cicd-pipeline-train-schedule-gradle
+[cloud_user@ip-10-0-1-67 ~]$ cd cicd-pipeline-train-schedule-gradle/
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ ls -la
+total 188
+drwxrwxr-x. 10 cloud_user cloud_user    236 Jan 30 10:54 .
+drwx------.  4 cloud_user cloud_user    172 Jan 30 10:54 ..
+-rw-rw-r--.  1 cloud_user cloud_user   1079 Jan 30 10:54 app.js
+drwxrwxr-x.  2 cloud_user cloud_user     17 Jan 30 10:54 bin
+drwxrwxr-x.  2 cloud_user cloud_user     25 Jan 30 10:54 data
+drwxrwxr-x.  8 cloud_user cloud_user    163 Jan 30 10:54 .git
+-rw-rw-r--.  1 cloud_user cloud_user     20 Jan 30 10:54 .gitignore
+drwxrwxr-x.  3 cloud_user cloud_user     21 Jan 30 10:54 gradle
+-rwxrwxr-x.  1 cloud_user cloud_user   5296 Jan 30 10:54 gradlew
+-rw-rw-r--.  1 cloud_user cloud_user   2260 Jan 30 10:54 gradlew.bat
+-rw-rw-r--.  1 cloud_user cloud_user    482 Jan 30 10:54 package.json
+-rw-rw-r--.  1 cloud_user cloud_user 160017 Jan 30 10:54 package-lock.json
+drwxrwxr-x.  4 cloud_user cloud_user     44 Jan 30 10:54 public
+-rw-rw-r--.  1 cloud_user cloud_user    585 Jan 30 10:54 README.md
+drwxrwxr-x.  2 cloud_user cloud_user     39 Jan 30 10:54 routes
+drwxrwxr-x.  2 cloud_user cloud_user     27 Jan 30 10:54 test
+drwxrwxr-x.  2 cloud_user cloud_user     61 Jan 30 10:54 views
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ ./gradlew build
+Downloading https://services.gradle.org/distributions/gradle-4.6-bin.zip
+......................................................................
+Unzipping /home/cloud_user/.gradle/wrapper/dists/gradle-4.6-bin/4jp4stjndanmxuerzfseyb6wo/gradle-4.6-bin.zip to /home/cloud_user/.gradle/wrapper/dists/gradle-4.6-bin/4jp4stjndanmxuerzfseyb6wo
+Set executable permissions for: /home/cloud_user/.gradle/wrapper/dists/gradle-4.6-bin/4jp4stjndanmxuerzfseyb6wo/gradle-4.6/bin/gradle
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+> Task :buildEnvironment 
+
+------------------------------------------------------------
+Root project
+------------------------------------------------------------
+
+classpath
+No dependencies
+
+A web-based, searchable dependency report is available by adding the --scan option.
+
+
+BUILD SUCCESSFUL in 9s
+1 actionable task: 1 executed
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ ./gradlew init
+
+BUILD SUCCESSFUL in 2s
+2 actionable tasks: 2 executed
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ ls -la
+total 200
+drwxrwxr-x. 11 cloud_user cloud_user   4096 Jan 30 10:59 .
+drwx------.  5 cloud_user cloud_user    187 Jan 30 10:58 ..
+-rw-rw-r--.  1 cloud_user cloud_user   1079 Jan 30 10:54 app.js
+drwxrwxr-x.  2 cloud_user cloud_user     17 Jan 30 10:54 bin
+-rw-rw-r--.  1 cloud_user cloud_user    201 Jan 30 10:59 build.gradle
+drwxrwxr-x.  2 cloud_user cloud_user     25 Jan 30 10:54 data
+drwxrwxr-x.  8 cloud_user cloud_user    163 Jan 30 10:54 .git
+-rw-rw-r--.  1 cloud_user cloud_user     20 Jan 30 10:54 .gitignore
+drwxrwxr-x.  3 cloud_user cloud_user     21 Jan 30 10:54 gradle
+drwxrwxr-x.  5 cloud_user cloud_user     65 Jan 30 10:58 .gradle
+-rwxrwxr-x.  1 cloud_user cloud_user   5296 Jan 30 10:59 gradlew
+-rw-rw-r--.  1 cloud_user cloud_user   2260 Jan 30 10:59 gradlew.bat
+-rw-rw-r--.  1 cloud_user cloud_user    482 Jan 30 10:54 package.json
+-rw-rw-r--.  1 cloud_user cloud_user 160017 Jan 30 10:54 package-lock.json
+drwxrwxr-x.  4 cloud_user cloud_user     44 Jan 30 10:54 public
+-rw-rw-r--.  1 cloud_user cloud_user    585 Jan 30 10:54 README.md
+drwxrwxr-x.  2 cloud_user cloud_user     39 Jan 30 10:54 routes
+-rw-rw-r--.  1 cloud_user cloud_user    382 Jan 30 10:59 settings.gradle
+drwxrwxr-x.  2 cloud_user cloud_user     27 Jan 30 10:54 test
+drwxrwxr-x.  2 cloud_user cloud_user     61 Jan 30 10:54 views
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ vim build.gradle 
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ cat build.gradle 
+plugins {
+  id "com.moowork.node" version "1.2.0"
+}
+
+node {
+  download = true
+}
+
+task build
+
+build.dependsOn npm_build
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ ./gradlew build
+Download https://plugins.gradle.org/m2/com/moowork/node/com.moowork.node.gradle.plugin/1.2.0/com.moowork.node.gradle.plugin-1.2.0.pom
+Download https://plugins.gradle.org/m2/com/moowork/gradle/gradle-node-plugin/1.2.0/gradle-node-plugin-1.2.0.pom
+Download https://plugins.gradle.org/m2/com/moowork/gradle/gradle-node-plugin/1.2.0/gradle-node-plugin-1.2.0.jar
+Download https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-x64.tar.gz
+
+BUILD SUCCESSFUL in 12s
+2 actionable tasks: 2 executed
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ vim build.gradle 
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ cat build.gradle 
+plugins {
+  id "com.moowork.node" version "1.2.0"
+}
+
+node {
+  download = true
+}
+
+task build
+
+build.dependsOn npm_build
+npm_build.dependsOn npmInstall
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ ./gradlew build
+...
+...
+...
+BUILD SUCCESSFUL in 40s
+3 actionable tasks: 2 executed, 1 up-to-date
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ vim build.gradle 
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ cat build.gradle 
+plugins {
+  id "com.moowork.node" version "1.2.0"
+}
+
+node {
+  download = true
+}
+
+task build
+
+build.dependsOn npm_build
+npm_build.dependsOn npmInstall
+npm_build.dependsOn npm_test
+npm_test.dependsOn npmInstall
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ ./gradlew build
+
+> Task :npm_test 
+
+> cicd-pipeline-train-schedule-git@0.0.0 test /home/cloud_user/cicd-pipeline-train-schedule-gradle
+> mocha
+
+
+
+  Index Page
+GET / 200 321.232 ms - 829
+    ✓ renders successfully (361ms)
+
+  Trains API
+GET /trains 200 4.773 ms - 1093
+    ✓ returns data successfully
+
+
+  2 passing (384ms)
+
+
+
+BUILD SUCCESSFUL in 3s
+4 actionable tasks: 2 executed, 2 up-to-date
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ vim build.gradle
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ cat build.gradle 
+plugins {
+  id "com.moowork.node" version "1.2.0"
+}
+
+node {
+  download = true
+}
+
+task build
+
+task zip(type: Zip) {
+  from ('.') {
+    include "*"
+    include "bin/**"
+    include "data/**"
+    include "node_modules/**"
+    include "public/**"
+    include "routes/**"
+    include "views/**"
+  }
+  destinationDir(file("dist"))
+  baseName "trainSchedule"
+}
+
+build.dependsOn zip
+zip.dependsOn npm_build
+build.dependsOn npm_build
+npm_build.dependsOn npmInstall
+npm_build.dependsOn npm_test
+npm_test.dependsOn npmInstall
+
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ ./gradlew build
+
+> Task :npm_test 
+
+> cicd-pipeline-train-schedule-git@0.0.0 test /home/cloud_user/cicd-pipeline-train-schedule-gradle
+> mocha
+
+
+
+  Index Page
+GET / 200 327.660 ms - 829
+    ✓ renders successfully (367ms)
+
+  Trains API
+GET /trains 200 4.327 ms - 1093
+    ✓ returns data successfully
+
+
+  2 passing (388ms)
+
+
+
+BUILD SUCCESSFUL in 7s
+5 actionable tasks: 3 executed, 2 up-to-date
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ ls -la
+total 208
+drwxrwxr-x.  13 cloud_user cloud_user   4096 Jan 30 11:26 .
+drwx------.   7 cloud_user cloud_user    214 Jan 30 11:25 ..
+-rw-rw-r--.   1 cloud_user cloud_user   1079 Jan 30 10:54 app.js
+drwxrwxr-x.   2 cloud_user cloud_user     17 Jan 30 10:54 bin
+-rw-rw-r--.   1 cloud_user cloud_user    516 Jan 30 11:25 build.gradle
+drwxrwxr-x.   2 cloud_user cloud_user     25 Jan 30 10:54 data
+drwxrwxr-x.   2 cloud_user cloud_user     31 Jan 30 11:26 dist
+drwxrwxr-x.   8 cloud_user cloud_user    163 Jan 30 10:54 .git
+-rw-rw-r--.   1 cloud_user cloud_user     20 Jan 30 10:54 .gitignore
+drwxrwxr-x.   3 cloud_user cloud_user     21 Jan 30 10:54 gradle
+drwxrwxr-x.   6 cloud_user cloud_user     79 Jan 30 11:07 .gradle
+-rwxrwxr-x.   1 cloud_user cloud_user   5296 Jan 30 10:59 gradlew
+-rw-rw-r--.   1 cloud_user cloud_user   2260 Jan 30 10:59 gradlew.bat
+drwxrwxr-x. 134 cloud_user cloud_user   4096 Jan 30 11:12 node_modules
+-rw-rw-r--.   1 cloud_user cloud_user    482 Jan 30 10:54 package.json
+-rw-rw-r--.   1 cloud_user cloud_user 160017 Jan 30 10:54 package-lock.json
+drwxrwxr-x.   4 cloud_user cloud_user     44 Jan 30 10:54 public
+-rw-rw-r--.   1 cloud_user cloud_user    585 Jan 30 10:54 README.md
+drwxrwxr-x.   2 cloud_user cloud_user     39 Jan 30 10:54 routes
+-rw-rw-r--.   1 cloud_user cloud_user    382 Jan 30 10:59 settings.gradle
+drwxrwxr-x.   2 cloud_user cloud_user     27 Jan 30 10:54 test
+drwxrwxr-x.   2 cloud_user cloud_user     61 Jan 30 10:54 views
+[cloud_user@ip-10-0-1-67 cicd-pipeline-train-schedule-gradle]$ ls -la dist/
+total 14028
+drwxrwxr-x.  2 cloud_user cloud_user       31 Jan 30 11:26 .
+drwxrwxr-x. 13 cloud_user cloud_user     4096 Jan 30 11:26 ..
+-rw-rw-r--.  1 cloud_user cloud_user 14358851 Jan 30 11:26 trainSchedule.zip
+[cloud_user@ip-10-0-1-225 cicd-pipeline-train-schedule-gradle]$ git status
+# On branch master
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	build.gradle
+#	dist/
+#	settings.gradle
+nothing added to commit but untracked files present (use "git add" to track)
+[cloud_user@ip-10-0-1-225 cicd-pipeline-train-schedule-gradle]$ vim .gitignore 
+[cloud_user@ip-10-0-1-225 cicd-pipeline-train-schedule-gradle]$ cat .gitignore 
+node_modules
+.gradle
+dist
+[cloud_user@ip-10-0-1-225 cicd-pipeline-train-schedule-gradle]$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   .gitignore
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	build.gradle
+#	settings.gradle
+no changes added to commit (use "git add" and/or "git commit -a")
+[cloud_user@ip-10-0-1-225 cicd-pipeline-train-schedule-gradle]$ git add .
+[cloud_user@ip-10-0-1-225 cicd-pipeline-train-schedule-gradle]$ git commit -m "add gradle build"
+[master f21fc1c] add gradle build
+ 3 files changed, 42 insertions(+), 1 deletion(-)
+ create mode 100644 build.gradle
+ create mode 100644 settings.gradle
+[cloud_user@ip-10-0-1-225 cicd-pipeline-train-schedule-gradle]$ git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Warning: Permanently added the RSA host key for IP address '192.30.253.113' to the list of known hosts.
+Enter passphrase for key '/home/cloud_user/.ssh/id_rsa': 
+Counting objects: 7, done.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 893 bytes | 0 bytes/s, done.
+Total 5 (delta 1), reused 2 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To git@github.com:lazarocastro/cicd-pipeline-train-schedule-gradle.git
+   ca4f7b2..f21fc1c  master -> master
+[cloud_user@ip-10-0-1-225 cicd-pipeline-train-schedule-gradle]$ 
+
+    </code>
+</pre>

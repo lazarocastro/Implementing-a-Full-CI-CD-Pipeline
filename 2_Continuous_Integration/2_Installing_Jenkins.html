@@ -1,0 +1,346 @@
+<div _ngcontent-c12="" class="info-card"><app-lab-tasks _ngcontent-c12="" class="ng-tns-c12-1 ng-tns-c17-7" _nghost-c17=""><mat-card _ngcontent-c17="" class="mat-card"><h3 _ngcontent-c17="" class="ng-tns-c17-7">Instructions</h3><app-render-markdown _ngcontent-c17="" _nghost-c9="" class="ng-tns-c17-7"><md-editor _ngcontent-c9="" name="Content" _nghost-c11="" class="ng-untouched ng-valid ng-dirty"><div _ngcontent-c11="" class="md-editor-container"><!----><div _ngcontent-c11="" class="editor-container"><div _ngcontent-c11="" style="display: none;"><div _ngcontent-c11="" class="editor-panel" style="height: auto;"><div _ngcontent-c11="" class="ace-editor ace_editor ace-tm"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled"></div><div class="ace_gutter-active-line"></div></div><div class="ace_scroller"><div class="ace_content"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 4px; visibility: visible;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 20px;"><div class="ace_scrollbar-inner" style="width: 20px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 20px;"><div class="ace_scrollbar-inner" style="height: 20px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div></div><div _ngcontent-c11="" style="display: block;"><div _ngcontent-c11="" class="preview-panel" style="height: auto;"><p>You have been asked to install and configure a Jenkins server so that your team can use it in order to do continuous integration.</p>
+<p>In order to accomplish this, you will need to:</p>
+<ul>
+<li>Install Java JDK 8 or later</li><li>Configure the Jenkins YUM repository</li><li>Install Jenkins from the YUM repository</li><li>Enable and start the Jenkins service</li><li>Get the temporary admin password and use it to log in to Jenkins</li><li>Install the default plugins</li><li>Create a permanent administrator account</li></ul>
+<p>Some useful links:</p>
+<ul>
+<li>Installing Jenkins on RedHat distributions: <a href="https://wiki.jenkins.io/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions">https://wiki.jenkins.io/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions</a></li><li>Jenkins installation documentation for other environments: <a href="https://jenkins.io/doc/book/installing/">https://jenkins.io/doc/book/installing/</a></li></ul>
+</div></div></div><!----></div></md-editor></app-render-markdown><h3 _ngcontent-c17="" class="ng-tns-c17-7">Objectives</h3><!----><div _ngcontent-c17="" class="ng-tns-c17-7 ng-star-inserted" style=""><div _ngcontent-c17="" class="task-container containerX" style="flex-direction: row; box-sizing: border-box; display: flex;"><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 5%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 5%;"><mat-icon _ngcontent-c17="" class="task-help mat-icon material-icons" role="img" aria-hidden="true">help</mat-icon></div><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 95%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 95%;"><strong _ngcontent-c17="" class="ng-tns-c17-7">Install Jenkins in the learning activity environment</strong><br _ngcontent-c17="" class="ng-tns-c17-7"><div _ngcontent-c17="" class="explanation ng-trigger ng-trigger-showHide" style="max-height: 10000px;"><app-render-markdown _ngcontent-c17="" class="ng-tns-c17-7" _nghost-c9=""><md-editor _ngcontent-c9="" name="Content" _nghost-c11="" class="ng-untouched ng-valid ng-dirty"><div _ngcontent-c11="" class="md-editor-container"><!----><div _ngcontent-c11="" class="editor-container"><div _ngcontent-c11="" style="display: none;"><div _ngcontent-c11="" class="editor-panel" style="height: auto;"><div _ngcontent-c11="" class="ace-editor ace_editor ace-tm"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled"></div><div class="ace_gutter-active-line"></div></div><div class="ace_scroller"><div class="ace_content"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 4px; visibility: visible;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 20px;"><div class="ace_scrollbar-inner" style="width: 20px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 20px;"><div class="ace_scrollbar-inner" style="height: 20px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div></div><div _ngcontent-c11="" style="display: block;"><div _ngcontent-c11="" class="preview-panel" style="height: auto;"><p>Install Jenkins in the learning activity environment via the YUM package manager. You must first configure the Jenkins YUM repositories in order to do this. You can install Jenkins like so:</p>
+<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined">sudo yum -y install java-1.8.0-openjdk epel-release
+sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+sudo yum -y install jenkins-2.121.1</code></pre></div></div></div><!----></div></md-editor></app-render-markdown></div></div></div></div><div _ngcontent-c17="" class="ng-tns-c17-7 ng-star-inserted" style=""><div _ngcontent-c17="" class="task-container containerX" style="flex-direction: row; box-sizing: border-box; display: flex;"><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 5%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 5%;"><mat-icon _ngcontent-c17="" class="task-help mat-icon material-icons" role="img" aria-hidden="true">help</mat-icon></div><div _ngcontent-c17="" class="task-listing-detail" fxflex="1 1 95%" style="flex: 1 1 100%; box-sizing: border-box; max-width: 95%;"><strong _ngcontent-c17="" class="ng-tns-c17-7">Complete Jenkins setup in the browser</strong><br _ngcontent-c17="" class="ng-tns-c17-7"><div _ngcontent-c17="" class="explanation ng-trigger ng-trigger-showHide" style="max-height: 10000px;"><app-render-markdown _ngcontent-c17="" class="ng-tns-c17-7" _nghost-c9=""><md-editor _ngcontent-c9="" name="Content" _nghost-c11="" class="ng-untouched ng-valid ng-dirty"><div _ngcontent-c11="" class="md-editor-container"><!----><div _ngcontent-c11="" class="editor-container"><div _ngcontent-c11="" style="display: none;"><div _ngcontent-c11="" class="editor-panel" style="height: auto;"><div _ngcontent-c11="" class="ace-editor ace_editor ace-tm"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled"></div><div class="ace_gutter-active-line"></div></div><div class="ace_scroller"><div class="ace_content"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 4px; visibility: visible;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 20px;"><div class="ace_scrollbar-inner" style="width: 20px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 20px;"><div class="ace_scrollbar-inner" style="height: 20px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div></div><div _ngcontent-c11="" style="display: block;"><div _ngcontent-c11="" class="preview-panel" style="height: auto;"><p>After installing and starting Jenkins, there is some setup that needs to be completed through the Jenkins web interface. You can access Jenkins at [Jenkins Server Public IP]:8080.</p>
+<p>First, you will need to login using the temporary <em>admin</em> password, which you can find on the server with this command:</p>
+<pre style="padding: 0; border-radius: 0;"><code class="hljs undefined"> sudo cat /var/lib/jenkins/secrets/initialAdminPassword</code></pre><p>Then, select <strong>Install suggested plugins</strong> and wait for the plugins to finish installing.</p>
+<p>Finally, you will need to fill out a form to create credentials for the first <em>admin</em> user.</p>
+</div></div></div><!----></div></md-editor></app-render-markdown></div></div></div></div></mat-card></app-lab-tasks></div>
+
+<h1>Solution</h1>
+<pre>
+    <code>
+[cloud_user@ip-10-0-1-162 ~]$ sudo yum -y remove java
+Loaded plugins: fastestmirror
+No Match for argument: java
+No Packages marked for removal
+[cloud_user@ip-10-0-1-162 ~]$ sudo yum -y install java-1.8.0-openjdk epel-release
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.advancedhosters.com
+ * epel: mirror.cogentco.com
+ * extras: mirrors.advancedhosters.com
+ * updates: mirrors.advancedhosters.com
+Package epel-release-7-11.noarch already installed and latest version
+Resolving Dependencies
+--> Running transaction check
+---> Package java-1.8.0-openjdk.x86_64 1:1.8.0.191.b12-1.el7_6 will be installed
+--> Processing Dependency: java-1.8.0-openjdk-headless(x86-64) = 1:1.8.0.191.b12-1.el7_6 for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: xorg-x11-fonts-Type1 for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libjvm.so(SUNWprivate_1.1)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libjava.so(SUNWprivate_1.1)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: fontconfig(x86-64) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libjvm.so()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libjava.so()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libgif.so.4()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libXtst.so.6()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libXrender.so.1()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libXi.so.6()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libXext.so.6()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libXcomposite.so.1()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: libX11.so.6()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+--> Running transaction check
+---> Package fontconfig.x86_64 0:2.13.0-4.3.el7 will be installed
+--> Processing Dependency: fontpackages-filesystem for package: fontconfig-2.13.0-4.3.el7.x86_64
+--> Processing Dependency: dejavu-sans-fonts for package: fontconfig-2.13.0-4.3.el7.x86_64
+---> Package giflib.x86_64 0:4.1.6-9.el7 will be installed
+--> Processing Dependency: libSM.so.6()(64bit) for package: giflib-4.1.6-9.el7.x86_64
+--> Processing Dependency: libICE.so.6()(64bit) for package: giflib-4.1.6-9.el7.x86_64
+---> Package java-1.8.0-openjdk-headless.x86_64 1:1.8.0.191.b12-1.el7_6 will be installed
+--> Processing Dependency: tzdata-java >= 2015d for package: 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: copy-jdk-configs >= 2.2 for package: 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: lksctp-tools(x86-64) for package: 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64
+--> Processing Dependency: jpackage-utils for package: 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64
+---> Package libX11.x86_64 0:1.6.5-2.el7 will be installed
+--> Processing Dependency: libX11-common >= 1.6.5-2.el7 for package: libX11-1.6.5-2.el7.x86_64
+--> Processing Dependency: libxcb.so.1()(64bit) for package: libX11-1.6.5-2.el7.x86_64
+---> Package libXcomposite.x86_64 0:0.4.4-4.1.el7 will be installed
+---> Package libXext.x86_64 0:1.3.3-3.el7 will be installed
+---> Package libXi.x86_64 0:1.7.9-1.el7 will be installed
+---> Package libXrender.x86_64 0:0.9.10-1.el7 will be installed
+---> Package libXtst.x86_64 0:1.2.3-1.el7 will be installed
+---> Package xorg-x11-fonts-Type1.noarch 0:7.5-9.el7 will be installed
+--> Processing Dependency: ttmkfdir for package: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> Processing Dependency: ttmkfdir for package: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> Processing Dependency: mkfontdir for package: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> Processing Dependency: mkfontdir for package: xorg-x11-fonts-Type1-7.5-9.el7.noarch
+--> Running transaction check
+---> Package copy-jdk-configs.noarch 0:3.3-10.el7_5 will be installed
+---> Package dejavu-sans-fonts.noarch 0:2.33-6.el7 will be installed
+--> Processing Dependency: dejavu-fonts-common = 2.33-6.el7 for package: dejavu-sans-fonts-2.33-6.el7.noarch
+---> Package fontpackages-filesystem.noarch 0:1.44-8.el7 will be installed
+---> Package javapackages-tools.noarch 0:3.4.1-11.el7 will be installed
+--> Processing Dependency: python-javapackages = 3.4.1-11.el7 for package: javapackages-tools-3.4.1-11.el7.noarch
+--> Processing Dependency: libxslt for package: javapackages-tools-3.4.1-11.el7.noarch
+---> Package libICE.x86_64 0:1.0.9-9.el7 will be installed
+---> Package libSM.x86_64 0:1.2.2-2.el7 will be installed
+---> Package libX11-common.noarch 0:1.6.5-2.el7 will be installed
+---> Package libxcb.x86_64 0:1.13-1.el7 will be installed
+--> Processing Dependency: libXau.so.6()(64bit) for package: libxcb-1.13-1.el7.x86_64
+---> Package lksctp-tools.x86_64 0:1.0.17-2.el7 will be installed
+---> Package ttmkfdir.x86_64 0:3.0.9-42.el7 will be installed
+---> Package tzdata-java.noarch 0:2018i-1.el7 will be installed
+---> Package xorg-x11-font-utils.x86_64 1:7.5-21.el7 will be installed
+--> Processing Dependency: libfontenc.so.1()(64bit) for package: 1:xorg-x11-font-utils-7.5-21.el7.x86_64
+--> Running transaction check
+---> Package dejavu-fonts-common.noarch 0:2.33-6.el7 will be installed
+---> Package libXau.x86_64 0:1.0.8-2.1.el7 will be installed
+---> Package libfontenc.x86_64 0:1.1.3-3.el7 will be installed
+---> Package libxslt.x86_64 0:1.1.28-5.el7 will be installed
+---> Package python-javapackages.noarch 0:3.4.1-11.el7 will be installed
+--> Processing Dependency: python-lxml for package: python-javapackages-3.4.1-11.el7.noarch
+--> Running transaction check
+---> Package python-lxml.x86_64 0:3.2.1-4.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+======================================================================================================================================================
+ Package                                        Arch                      Version                                    Repository                  Size
+======================================================================================================================================================
+Installing:
+ java-1.8.0-openjdk                             x86_64                    1:1.8.0.191.b12-1.el7_6                    updates                    254 k
+Installing for dependencies:
+ copy-jdk-configs                               noarch                    3.3-10.el7_5                               base                        21 k
+ dejavu-fonts-common                            noarch                    2.33-6.el7                                 base                        64 k
+ dejavu-sans-fonts                              noarch                    2.33-6.el7                                 base                       1.4 M
+ fontconfig                                     x86_64                    2.13.0-4.3.el7                             base                       254 k
+ fontpackages-filesystem                        noarch                    1.44-8.el7                                 base                       9.9 k
+ giflib                                         x86_64                    4.1.6-9.el7                                base                        40 k
+ java-1.8.0-openjdk-headless                    x86_64                    1:1.8.0.191.b12-1.el7_6                    updates                     32 M
+ javapackages-tools                             noarch                    3.4.1-11.el7                               base                        73 k
+ libICE                                         x86_64                    1.0.9-9.el7                                base                        66 k
+ libSM                                          x86_64                    1.2.2-2.el7                                base                        39 k
+ libX11                                         x86_64                    1.6.5-2.el7                                base                       606 k
+ libX11-common                                  noarch                    1.6.5-2.el7                                base                       164 k
+ libXau                                         x86_64                    1.0.8-2.1.el7                              base                        29 k
+ libXcomposite                                  x86_64                    0.4.4-4.1.el7                              base                        22 k
+ libXext                                        x86_64                    1.3.3-3.el7                                base                        39 k
+ libXi                                          x86_64                    1.7.9-1.el7                                base                        40 k
+ libXrender                                     x86_64                    0.9.10-1.el7                               base                        26 k
+ libXtst                                        x86_64                    1.2.3-1.el7                                base                        20 k
+ libfontenc                                     x86_64                    1.1.3-3.el7                                base                        31 k
+ libxcb                                         x86_64                    1.13-1.el7                                 base                       214 k
+ libxslt                                        x86_64                    1.1.28-5.el7                               base                       242 k
+ lksctp-tools                                   x86_64                    1.0.17-2.el7                               base                        88 k
+ python-javapackages                            noarch                    3.4.1-11.el7                               base                        31 k
+ python-lxml                                    x86_64                    3.2.1-4.el7                                base                       758 k
+ ttmkfdir                                       x86_64                    3.0.9-42.el7                               base                        48 k
+ tzdata-java                                    noarch                    2018i-1.el7                                updates                    187 k
+ xorg-x11-font-utils                            x86_64                    1:7.5-21.el7                               base                       104 k
+ xorg-x11-fonts-Type1                           noarch                    7.5-9.el7                                  base                       521 k
+
+Transaction Summary
+======================================================================================================================================================
+Install  1 Package (+28 Dependent packages)
+
+Total download size: 37 M
+Installed size: 119 M
+Downloading packages:
+(1/29): copy-jdk-configs-3.3-10.el7_5.noarch.rpm                                                                               |  21 kB  00:00:00     
+(2/29): dejavu-fonts-common-2.33-6.el7.noarch.rpm                                                                              |  64 kB  00:00:00     
+(3/29): fontpackages-filesystem-1.44-8.el7.noarch.rpm                                                                          | 9.9 kB  00:00:00     
+(4/29): fontconfig-2.13.0-4.3.el7.x86_64.rpm                                                                                   | 254 kB  00:00:00     
+(5/29): giflib-4.1.6-9.el7.x86_64.rpm                                                                                          |  40 kB  00:00:00     
+(6/29): dejavu-sans-fonts-2.33-6.el7.noarch.rpm                                                                                | 1.4 MB  00:00:00     
+(7/29): javapackages-tools-3.4.1-11.el7.noarch.rpm                                                                             |  73 kB  00:00:00     
+(8/29): libSM-1.2.2-2.el7.x86_64.rpm                                                                                           |  39 kB  00:00:00     
+(9/29): libX11-1.6.5-2.el7.x86_64.rpm                                                                                          | 606 kB  00:00:00     
+(10/29): libXau-1.0.8-2.1.el7.x86_64.rpm                                                                                       |  29 kB  00:00:00     
+(11/29): libX11-common-1.6.5-2.el7.noarch.rpm                                                                                  | 164 kB  00:00:00     
+(12/29): libXcomposite-0.4.4-4.1.el7.x86_64.rpm                                                                                |  22 kB  00:00:00     
+(13/29): libXi-1.7.9-1.el7.x86_64.rpm                                                                                          |  40 kB  00:00:00     
+(14/29): libXext-1.3.3-3.el7.x86_64.rpm                                                                                        |  39 kB  00:00:00     
+(15/29): libXrender-0.9.10-1.el7.x86_64.rpm                                                                                    |  26 kB  00:00:00     
+(16/29): libXtst-1.2.3-1.el7.x86_64.rpm                                                                                        |  20 kB  00:00:00     
+(17/29): libfontenc-1.1.3-3.el7.x86_64.rpm                                                                                     |  31 kB  00:00:00     
+(18/29): libxslt-1.1.28-5.el7.x86_64.rpm                                                                                       | 242 kB  00:00:00     
+(19/29): libICE-1.0.9-9.el7.x86_64.rpm                                                                                         |  66 kB  00:00:00     
+(20/29): lksctp-tools-1.0.17-2.el7.x86_64.rpm                                                                                  |  88 kB  00:00:00     
+(21/29): libxcb-1.13-1.el7.x86_64.rpm                                                                                          | 214 kB  00:00:00     
+(22/29): python-javapackages-3.4.1-11.el7.noarch.rpm                                                                           |  31 kB  00:00:00     
+(23/29): java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64.rpm                                                                   | 254 kB  00:00:00     
+(24/29): python-lxml-3.2.1-4.el7.x86_64.rpm                                                                                    | 758 kB  00:00:00     
+(25/29): ttmkfdir-3.0.9-42.el7.x86_64.rpm                                                                                      |  48 kB  00:00:00     
+(26/29): xorg-x11-fonts-Type1-7.5-9.el7.noarch.rpm                                                                             | 521 kB  00:00:00     
+(27/29): xorg-x11-font-utils-7.5-21.el7.x86_64.rpm                                                                             | 104 kB  00:00:00     
+(28/29): tzdata-java-2018i-1.el7.noarch.rpm                                                                                    | 187 kB  00:00:00     
+(29/29): java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64.rpm                                                          |  32 MB  00:00:01     
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                  26 MB/s |  37 MB  00:00:01     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : libxslt-1.1.28-5.el7.x86_64                                                                                                       1/29 
+  Installing : fontpackages-filesystem-1.44-8.el7.noarch                                                                                         2/29 
+  Installing : libICE-1.0.9-9.el7.x86_64                                                                                                         3/29 
+  Installing : libSM-1.2.2-2.el7.x86_64                                                                                                          4/29 
+  Installing : dejavu-fonts-common-2.33-6.el7.noarch                                                                                             5/29 
+  Installing : dejavu-sans-fonts-2.33-6.el7.noarch                                                                                               6/29 
+  Installing : fontconfig-2.13.0-4.3.el7.x86_64                                                                                                  7/29 
+  Installing : python-lxml-3.2.1-4.el7.x86_64                                                                                                    8/29 
+  Installing : python-javapackages-3.4.1-11.el7.noarch                                                                                           9/29 
+  Installing : javapackages-tools-3.4.1-11.el7.noarch                                                                                           10/29 
+  Installing : libfontenc-1.1.3-3.el7.x86_64                                                                                                    11/29 
+  Installing : 1:xorg-x11-font-utils-7.5-21.el7.x86_64                                                                                          12/29 
+  Installing : libX11-common-1.6.5-2.el7.noarch                                                                                                 13/29 
+  Installing : libXau-1.0.8-2.1.el7.x86_64                                                                                                      14/29 
+  Installing : libxcb-1.13-1.el7.x86_64                                                                                                         15/29 
+  Installing : libX11-1.6.5-2.el7.x86_64                                                                                                        16/29 
+  Installing : libXext-1.3.3-3.el7.x86_64                                                                                                       17/29 
+  Installing : libXi-1.7.9-1.el7.x86_64                                                                                                         18/29 
+  Installing : libXtst-1.2.3-1.el7.x86_64                                                                                                       19/29 
+  Installing : giflib-4.1.6-9.el7.x86_64                                                                                                        20/29 
+  Installing : libXrender-0.9.10-1.el7.x86_64                                                                                                   21/29 
+  Installing : libXcomposite-0.4.4-4.1.el7.x86_64                                                                                               22/29 
+  Installing : lksctp-tools-1.0.17-2.el7.x86_64                                                                                                 23/29 
+  Installing : copy-jdk-configs-3.3-10.el7_5.noarch                                                                                             24/29 
+  Installing : ttmkfdir-3.0.9-42.el7.x86_64                                                                                                     25/29 
+  Installing : xorg-x11-fonts-Type1-7.5-9.el7.noarch                                                                                            26/29 
+  Installing : tzdata-java-2018i-1.el7.noarch                                                                                                   27/29 
+  Installing : 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64                                                                       28/29 
+  Installing : 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64                                                                                29/29 
+  Verifying  : libXext-1.3.3-3.el7.x86_64                                                                                                        1/29 
+  Verifying  : libXi-1.7.9-1.el7.x86_64                                                                                                          2/29 
+  Verifying  : fontconfig-2.13.0-4.3.el7.x86_64                                                                                                  3/29 
+  Verifying  : giflib-4.1.6-9.el7.x86_64                                                                                                         4/29 
+  Verifying  : libXrender-0.9.10-1.el7.x86_64                                                                                                    5/29 
+  Verifying  : 1:xorg-x11-font-utils-7.5-21.el7.x86_64                                                                                           6/29 
+  Verifying  : python-lxml-3.2.1-4.el7.x86_64                                                                                                    7/29 
+  Verifying  : tzdata-java-2018i-1.el7.noarch                                                                                                    8/29 
+  Verifying  : libICE-1.0.9-9.el7.x86_64                                                                                                         9/29 
+  Verifying  : fontpackages-filesystem-1.44-8.el7.noarch                                                                                        10/29 
+  Verifying  : ttmkfdir-3.0.9-42.el7.x86_64                                                                                                     11/29 
+  Verifying  : copy-jdk-configs-3.3-10.el7_5.noarch                                                                                             12/29 
+  Verifying  : python-javapackages-3.4.1-11.el7.noarch                                                                                          13/29 
+  Verifying  : dejavu-fonts-common-2.33-6.el7.noarch                                                                                            14/29 
+  Verifying  : libXcomposite-0.4.4-4.1.el7.x86_64                                                                                               15/29 
+  Verifying  : libXtst-1.2.3-1.el7.x86_64                                                                                                       16/29 
+  Verifying  : libxcb-1.13-1.el7.x86_64                                                                                                         17/29 
+  Verifying  : lksctp-tools-1.0.17-2.el7.x86_64                                                                                                 18/29 
+  Verifying  : xorg-x11-fonts-Type1-7.5-9.el7.noarch                                                                                            19/29 
+  Verifying  : libxslt-1.1.28-5.el7.x86_64                                                                                                      20/29 
+  Verifying  : libX11-1.6.5-2.el7.x86_64                                                                                                        21/29 
+  Verifying  : 1:java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64                                                                                22/29 
+  Verifying  : dejavu-sans-fonts-2.33-6.el7.noarch                                                                                              23/29 
+  Verifying  : javapackages-tools-3.4.1-11.el7.noarch                                                                                           24/29 
+  Verifying  : 1:java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64                                                                       25/29 
+  Verifying  : libXau-1.0.8-2.1.el7.x86_64                                                                                                      26/29 
+  Verifying  : libSM-1.2.2-2.el7.x86_64                                                                                                         27/29 
+  Verifying  : libX11-common-1.6.5-2.el7.noarch                                                                                                 28/29 
+  Verifying  : libfontenc-1.1.3-3.el7.x86_64                                                                                                    29/29 
+
+Installed:
+  java-1.8.0-openjdk.x86_64 1:1.8.0.191.b12-1.el7_6                                                                                                   
+
+Dependency Installed:
+  copy-jdk-configs.noarch 0:3.3-10.el7_5                       dejavu-fonts-common.noarch 0:2.33-6.el7       dejavu-sans-fonts.noarch 0:2.33-6.el7    
+  fontconfig.x86_64 0:2.13.0-4.3.el7                           fontpackages-filesystem.noarch 0:1.44-8.el7   giflib.x86_64 0:4.1.6-9.el7              
+  java-1.8.0-openjdk-headless.x86_64 1:1.8.0.191.b12-1.el7_6   javapackages-tools.noarch 0:3.4.1-11.el7      libICE.x86_64 0:1.0.9-9.el7              
+  libSM.x86_64 0:1.2.2-2.el7                                   libX11.x86_64 0:1.6.5-2.el7                   libX11-common.noarch 0:1.6.5-2.el7       
+  libXau.x86_64 0:1.0.8-2.1.el7                                libXcomposite.x86_64 0:0.4.4-4.1.el7          libXext.x86_64 0:1.3.3-3.el7             
+  libXi.x86_64 0:1.7.9-1.el7                                   libXrender.x86_64 0:0.9.10-1.el7              libXtst.x86_64 0:1.2.3-1.el7             
+  libfontenc.x86_64 0:1.1.3-3.el7                              libxcb.x86_64 0:1.13-1.el7                    libxslt.x86_64 0:1.1.28-5.el7            
+  lksctp-tools.x86_64 0:1.0.17-2.el7                           python-javapackages.noarch 0:3.4.1-11.el7     python-lxml.x86_64 0:3.2.1-4.el7         
+  ttmkfdir.x86_64 0:3.0.9-42.el7                               tzdata-java.noarch 0:2018i-1.el7              xorg-x11-font-utils.x86_64 1:7.5-21.el7  
+  xorg-x11-fonts-Type1.noarch 0:7.5-9.el7                     
+
+Complete!
+[cloud_user@ip-10-0-1-162 ~]$ sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+--2019-01-22 08:42:44--  http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+Resolving pkg.jenkins-ci.org (pkg.jenkins-ci.org)... 52.202.51.185
+Connecting to pkg.jenkins-ci.org (pkg.jenkins-ci.org)|52.202.51.185|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 85
+Saving to: ‘/etc/yum.repos.d/jenkins.repo’
+
+100%[============================================================================================================>] 85          --.-K/s   in 0s      
+
+2019-01-22 08:42:44 (16,1 MB/s) - ‘/etc/yum.repos.d/jenkins.repo’ saved [85/85]
+
+[cloud_user@ip-10-0-1-162 ~]$ sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+[cloud_user@ip-10-0-1-162 ~]$ ls
+[cloud_user@ip-10-0-1-162 ~]$ sudo yum -y install jenkins-2.121.1
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.advancedhosters.com
+ * epel: d2lzkl7pfhq30w.cloudfront.net
+ * extras: mirrors.advancedhosters.com
+ * updates: mirrors.advancedhosters.com
+jenkins                                                                                                                        | 2.9 kB  00:00:00     
+jenkins/primary_db                                                                                                             |  26 kB  00:00:00     
+Resolving Dependencies
+--> Running transaction check
+---> Package jenkins.noarch 0:2.121.1-1.1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+======================================================================================================================================================
+ Package                            Arch                              Version                                Repository                          Size
+======================================================================================================================================================
+Installing:
+ jenkins                            noarch                            2.121.1-1.1                            jenkins                             71 M
+
+Transaction Summary
+======================================================================================================================================================
+Install  1 Package
+
+Total download size: 71 M
+Installed size: 71 M
+Downloading packages:
+jenkins-2.121.1-1.1.noarch.rpm                                                                                                 |  71 MB  00:00:12     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : jenkins-2.121.1-1.1.noarch                                                                                                         1/1 
+  Verifying  : jenkins-2.121.1-1.1.noarch                                                                                                         1/1 
+
+Installed:
+  jenkins.noarch 0:2.121.1-1.1                                                                                                                        
+
+Complete!
+[cloud_user@ip-10-0-1-162 ~]$ systemctl enable jenkins
+jenkins.service is not a native service, redirecting to /sbin/chkconfig.
+Executing /sbin/chkconfig jenkins on
+You do not have enough privileges to perform this operation.
+[cloud_user@ip-10-0-1-162 ~]$ sudo systemctl enable jenkins
+jenkins.service is not a native service, redirecting to /sbin/chkconfig.
+Executing /sbin/chkconfig jenkins on
+[cloud_user@ip-10-0-1-162 ~]$ sudo systemctl start jenkins
+[cloud_user@ip-10-0-1-162 ~]$ sudo tail -f /var/log/jenkins/jenkins.log
+This may also be found at: /var/lib/jenkins/secrets/initialAdminPassword
+
+*************************************************************
+*************************************************************
+*************************************************************
+
+Jan 22, 2019 8:44:34 AM hudson.model.DownloadService$Downloadable load
+INFO: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
+Jan 22, 2019 8:44:34 AM hudson.model.AsyncPeriodicWork$1 run
+INFO: Finished Download metadata. 7,674 ms
+Jan 22, 2019 8:44:38 AM hudson.model.UpdateSite updateData
+INFO: Obtained the latest update center data file for UpdateSource default
+Jan 22, 2019 8:44:38 AM jenkins.InitReactorRunner$1 onAttained
+INFO: Completed initialization
+Jan 22, 2019 8:44:38 AM hudson.WebAppMain$3 run
+INFO: Jenkins is fully up and running
+^C
+[cloud_user@ip-10-0-1-162 ~]$ cat /var/lib/jenkins/secrets/initialAdminPassword
+cat: /var/lib/jenkins/secrets/initialAdminPassword: Permission denied
+[cloud_user@ip-10-0-1-162 ~]$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+51769d8f0a1041d3b89bd6ab74c922de
+[cloud_user@ip-10-0-1-162 ~]$ 
+
+    </code>
+</pre>

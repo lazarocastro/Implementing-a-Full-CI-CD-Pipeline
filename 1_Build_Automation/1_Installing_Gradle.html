@@ -1,0 +1,29 @@
+    <div class="col-md-12">
+                                <p></p><p>Before you can begin using Gradle to create build automation, you need to be able to install it. This lesson will walk you through the process of installing Gradle. It will also introduce you to a slightly more advanced way of installing and using Gradle, known as the Gradle Wrapper.  After completing this lesson, you should be able to install Gradle and the Gradle Wrapper so that you can execute Gradle builds.</p>
+<br>
+<p>
+You can find more information about installing Gradle at <a href="https://gradle.org/install/">https://gradle.org/install/</a>
+</p>
+<br>
+<p>Here are the commands used in the demo to install gradle:</p>
+<pre>cd ~/
+wget -O ~/gradle-4.7-bin.zip https://services.gradle.org/distributions/gradle-4.7-bin.zip
+sudo yum -y install unzip java-1.8.0-openjdk
+sudo mkdir /opt/gradle
+sudo unzip -d /opt/gradle/ ~/gradle-4.7-bin.zip
+sudo vi /etc/profile.d/gradle.sh
+</pre>
+<p>Put this text into gradle.sh:</p>
+<pre>export PATH=$PATH:/opt/gradle/gradle-4.7/bin</pre>
+<p>Then set permissions on gradle.sh:</p>
+<pre>sudo chmod 755 /etc/profile.d/gradle.sh</pre>
+<p>Finally, after logging out of the server and logging back in:</p>
+<pre>gradle --version</pre>
+<p>And the commands used to install and run the Gradle Wrapper:</p>
+<pre>cd ~/
+mkdir my-project
+cd my-project
+gradle wrapper
+./gradlew build
+</pre><p></p>
+                            </div>

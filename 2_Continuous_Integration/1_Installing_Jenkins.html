@@ -1,0 +1,17 @@
+<div class="col-md-12">
+                                <p></p><p></p><p>In order to use Jenkins as part of a CI/CD solution, you must first know how to install it. This lesson will take you through the steps necessary in order to install Jenkins and prepare it for use in a CI process. It provides a demonstration of installing Jenkins on a CentOS environment using yum.  After completing this lesson, you should be able to perform a Jenkins installation yourself.</p>
+<br><p></p>
+<p></p><p>Jenkins  installation docs: <a href="https://jenkins.io/doc/book/installing/">https://jenkins.io/doc/book/installing/</a></p>
+<br><p></p>
+<p></p><p>Jenkins  wiki on installing Jenkins in a CentOS environment: <a href="https://wiki.jenkins.io/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions">https://wiki.jenkins.io/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions</a></p>
+<br><p></p>
+<p></p><p>Here are the commands used to install Jenkins in the demonstration:</p><p></p>
+<pre>sudo yum -y remove java
+sudo yum -y install java-1.8.0-openjdk
+sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+sudo yum -y install jenkins-2.121.1
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+</pre><p></p>
+                            </div>

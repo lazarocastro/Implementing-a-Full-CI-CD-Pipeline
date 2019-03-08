@@ -1,0 +1,31 @@
+<div class="col-md-12">
+                                <p></p><p>Kubernetes provides some powerful tools for doing autoscaling. A horizontal pod autoscaler (HPA) is one way to implement pod scaling based upon a variety of metrics. This lesson demonstrates how to implement a simple horizontal pod autoscaler within a Kubernetes cluster.</p>
+<br>
+<p>Be sure to check out the full HPA documentation: <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/">https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/</a></p><p>
+<br>
+</p><p>Here is the GitHub repo for the source code used in the demo. Check the <strong>example-solution</strong> branch for the demo's final state: <a href="https://github.com/linuxacademy/cicd-pipeline-train-schedule-autoscaling">https://github.com/linuxacademy/cicd-pipeline-train-schedule-autoscaling</a></p>
+<br>
+<p>Here are the commands used to set up the autoscaler in the demo:
+</p><pre>cd ~/
+git clone https://github.com/kubernetes-incubator/metrics-server.git
+cd metrics-server/
+kubectl create -f deploy/1.8+/
+kubectl get --raw /apis/metrics.k8s.io/
+cd ~/
+git clone <your fork="" of="" the="" sample="" code="">
+cd cicd-pipeline-train-schedule-autoscaling/
+vi train-schedule-kube.yml
+kubectl apply -f train-schedule-kube.yml
+</your></pre>
+You can find the changes made to <em>train-schedule-kube.yml</em> in the <em>example-solution</em> branch of the GitHub repo.
+
+Once you have deployed the app and the HPA, you can generate CPU load to test it by spinning up a busybox shell:
+<pre>kubectl run -i --tty load-generator --image=busybox /bin/sh
+</pre>
+
+Then run this in the busybox shell to create load:
+<pre>while true; do wget -q -O- http://<kubernetes node="" private="" ip="">:8080/generate-cpu-load; done
+</kubernetes></pre>
+<p></p>
+<p></p>
+                            </div>
